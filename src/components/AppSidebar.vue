@@ -28,14 +28,21 @@ ul {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
-  padding:0 1.1rem;
+  padding: 0 1.1rem;
   color: white;
-  background-color: #4DA1FF;
-  border-radius: 0.28571429rem
+  background-color: #4da1ff;
+  border-radius: 0.28571429rem;
 }
-.hidden{
+@media only screen and (min-width: 962px) {
+  .hidden {
+    visibility: visible;
+    display: flex;
+  }
+}
+@media only screen and (max-width: 961.999999999px) {
+  #sideBar {
     visibility: hidden;
     display: none;
+  }
 }
-
 </style>

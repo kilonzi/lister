@@ -1,18 +1,26 @@
+/* eslint-disable no-console */
 <template>
   <div class="listing">
     <navBar />
-    <div class="content">
+    <div class="content" id="contentDimmer">
       <aside class="side">
         <sideBar></sideBar>
       </aside>
       <section class="section">
         <div class="createPost">
-          <button class="ui button newPostButton">
+          <button
+            id="contentNewButton"
+            class="ui button newPostButton"
+            v-on:click="openCreateListing"
+          >
             <i class="edit outline icon"></i>
             New Listing
           </button>
         </div>
-        <listingItem />
+        <div id="contentList" class="content-list">
+          <appNewPostForm />
+          <listingItem />
+        </div>
       </section>
     </div>
   </div>
@@ -22,21 +30,54 @@
 import sideBar from "../components/AppSidebar";
 import listingItem from "../components/AppListingItem";
 import navBar from "../components/AppNavBar";
+import appNewPostForm from "../components/NewPostForm";
+
 export default {
   components: {
     sideBar,
     listingItem,
-    navBar
+    navBar,
+    appNewPostForm
+  },
+  methods: {
+    show() {
+      // eslint-disable-next-line no-console
+      console.log("erty");
+      this.$modal.show("createNewListing");
+      // eslint-disable-next-line no-console
+      console.log(this.$modal.show("createNewListing"));
+    },
+    hide() {
+      this.$modal.hide("createNewListing");
+    },
+    openCreateListing() {
+      // document.getElementById("contentList").classList.toggle("hidden");
+      // document.getElementById("contentNewButton").classList.toggle("hidden");
+      document.getElementById("createNewListing").classList.toggle("display");
+    }
   }
 };
 </script>
 
-<style>
-/* .listing {
+<style scoped>
+.content-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  
+}
+.newPostItem {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-} */
+}
+.display {
+  display: none;
+}
+.hidden {
+  visibility: hidden;
+}
 .content {
   display: flex;
   flex-direction: row;
@@ -46,6 +87,8 @@ export default {
 .section {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   width: 100%;
   margin: 0 1rem;
@@ -63,10 +106,10 @@ export default {
   border-bottom: 1px solid #4ca1ff;
 }
 .newPostButton {
-  min-width: 100px;
+  min-width: 50px;
   border-radius: 0.28571429rem;
   color: white !important;
   background-color: #4ca1ff !important;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif !important;
+  font-family: "Avenir", Helvetica, Arial, sans-serif !important;
 }
 </style>

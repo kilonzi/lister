@@ -12,11 +12,18 @@
     "reset-css": "^5.0.1",
     "semantic-ui-button": "^2.3.2",
     "semantic-ui-card": "^2.3.1",
+    "semantic-ui-dimmer": "^2.4.0",
+    "semantic-ui-dropdown": "^2.4.1",
+    "semantic-ui-form": "^2.4.0",
     "semantic-ui-icon": "^2.3.3",
     "semantic-ui-image": "^2.3.1",
     "semantic-ui-input": "^2.4.0",
+    "semantic-ui-modal": "^2.4.1",
+    "semantic-ui-placeholder": "^2.4.0",
     "vue": "^2.6.10",
+    "vue-js-modal": "^1.3.31",
     "vue-router": "^3.1.3",
+    "vue2-datepicker": "^3.3.0",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
