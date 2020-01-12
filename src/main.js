@@ -11,7 +11,7 @@ import 'semantic-ui-dropdown/dropdown.css'
 import 'semantic-ui-dimmer/dimmer.css'
 import 'semantic-ui-modal/modal.css'
 import 'semantic-ui-form/form.css'
-import 'semantic-ui-placeholder/placeholder.css'
+import 'semantic-ui-segment/segment.css'
 import 'reset-css'
 import VModal from 'vue-js-modal'
 

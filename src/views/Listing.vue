@@ -18,7 +18,7 @@
           </button>
         </div>
         <div id="contentList" class="content-list">
-          <appNewPostForm />
+          <newPostForm />
           <listingItem />
         </div>
       </section>
@@ -30,14 +30,14 @@
 import sideBar from "../components/AppSidebar";
 import listingItem from "../components/AppListingItem";
 import navBar from "../components/AppNavBar";
-import appNewPostForm from "../components/NewPostForm";
+import newPostForm from "../components/NewPostForm";
 
 export default {
   components: {
     sideBar,
     listingItem,
     navBar,
-    appNewPostForm
+    newPostForm
   },
   methods: {
     show() {
@@ -65,7 +65,7 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  
+
 }
 .newPostItem {
   display: flex;
@@ -90,7 +90,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
   margin: 0 1rem;
   background-color: white;
   border-radius: 0.28571429rem;
