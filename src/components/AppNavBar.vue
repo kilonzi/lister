@@ -26,7 +26,7 @@ export default {
   name: "navBar",
   methods: {
     collapseSidebar() {
-      document.getElementById("sideBar").classList.toggle("hidden");
+      document.getElementById("sideBar").classList.toggle("display");
     }
   }
 };

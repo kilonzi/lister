@@ -1,22 +1,37 @@
 <template>
-  <div class="new-post">
+  <modal class="new-post" name="newPost" adaptive="True" height="auto">
     <div class="ui form post-area">
-      <div class="field">
-        <textarea rows="3" class="textarea" placeholder="Post Message"></textarea>
+      <div>
+        <div class="field">
+          <textarea rows="3" class="textarea" placeholder="Post Message"></textarea>
+        </div>
+        <button class="ui primary basic icon button upload">
+          <i class="cloud icon"></i>
+          Upload Photos
+        </button>
       </div>
+
       <div class="actions">
         <div class="schedule">
-          <DatePicker v-model="scheduled" type="date" placeholder="Schedule Date"></DatePicker>
           <DatePicker
-            v-model="scheduled"
+            v-model="scheduledDate"
+            type="date"
+            placeholder="Schedule Date"
+            confirm-text="OK"
+            confirm="true"
+          ></DatePicker>
+          <DatePicker
+            v-model="scheduledTime"
             type="time"
             placeholder="Schedule Time"
             format="hh:mm a"
             value-type="format"
+            confirm-text="OK"
+            confirm="true"
           ></DatePicker>
           <div class="ui compact menu">
             <div class="ui simple dropdown item">
-              Repeat
+              No Repeat
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="item">Daily</div>
@@ -27,15 +42,12 @@
           </div>
         </div>
         <div class="buttons">
-          <button class="ui primary basic icon button">
-            <i class="cloud icon"></i>
-            Upload Photos
-          </button>
-          <button class="ui primary button">Post</button>
+          <button v-if="!scheduledDate || !scheduledTime" class="ui primary button">Post</button>
+          <button v-if="scheduledDate && scheduledTime" class="ui primary button">Schedule</button>
         </div>
       </div>
     </div>
-  </div>
+  </modal>
 </template>
 
 <script>
@@ -45,8 +57,12 @@ export default {
   name: "newPostForm",
   data() {
     return {
-      scheduled: ""
-    };
+      scheduledDate: "",
+      scheduledTime: "",
+      disabledDate:{
+       to:new Date(Date.now())
+      }
+    }
   },
   components: {
     DatePicker
@@ -55,45 +71,14 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 962px) {
-  .actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 90%;
-    margin: 1rem;
-  }
-  .buttons * {
-    margin: 1.5rem;
-  }
-  .schedule {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-  }
+.upload {
+  margin: 0.5rem !important;
 }
-@media only screen and (max-width: 961.999999999px) {
-  .actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 90%;
-    margin: 1rem;
-  }
-  .buttons {
-    display: flex;
-    flex-direction: column;
-  }
-  .buttons * {
-    margin: 1.5rem;
-  }
-}
-
-.new-post {
-  width: 90%;
-  border: 2px solid black;
+.schedule {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.5rem;
 }
 
 .post-area {
@@ -108,13 +93,13 @@ export default {
   width: 60%;
 }
 
-.schedule {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  width: 50%;
-}
 .schedule > .menu {
-  margin: 1rem;
+  margin: 0.5rem;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 1.5rem;
 }
 </style>

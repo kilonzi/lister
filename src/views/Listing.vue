@@ -8,11 +8,7 @@
       </aside>
       <section class="section">
         <div class="createPost">
-          <button
-            id="contentNewButton"
-            class="ui button newPostButton"
-            v-on:click="openCreateListing"
-          >
+          <button id="contentNewButton" class="ui button newPostButton" v-on:click="show">
             <i class="edit outline icon"></i>
             New Listing
           </button>
@@ -43,7 +39,7 @@ export default {
     show() {
       // eslint-disable-next-line no-console
       console.log("erty");
-      this.$modal.show("createNewListing");
+      this.$modal.show("newPost");
       // eslint-disable-next-line no-console
       console.log(this.$modal.show("createNewListing"));
     },
@@ -65,7 +61,8 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-
+  min-width: 80vw;
+  min-height: 100vh;
 }
 .newPostItem {
   display: flex;

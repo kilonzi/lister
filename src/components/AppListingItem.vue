@@ -33,7 +33,8 @@ export default {
   name: "listingItem",
   data() {
     return {
-      posts: ["QQ", "QW", "wer", "QQq", "QWq", "werq", "QQs", "QWs", "wers"]
+      //posts: ["QQ", "QW", "wer", "QQq", "QWq", "werq", "QQs", "QWs", "wers"]
+      posts: []
     };
   }
 };
