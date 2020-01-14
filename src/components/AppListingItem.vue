@@ -44,9 +44,9 @@ export default {
 .listContainer {
   height: 100vh;
 }
-.listItem {
+/* .listItem {
   margin: 0.5em 0.5em !important;
-}
+} */
 .listingItems {
   max-height: 100%;
   margin: 0em;

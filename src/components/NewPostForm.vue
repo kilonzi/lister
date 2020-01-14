@@ -1,29 +1,41 @@
 <template>
-  <modal class="new-post" name="newPost" adaptive="True" height="auto">
-    <div class="ui form post-area">
-      <div>
-        <div class="field">
-          <textarea rows="3" class="textarea" placeholder="Post Message"></textarea>
+  <div class="ui form post-area">
+    <div class="post-content">
+      <textarea rows="3" class="textarea" placeholder="Message"></textarea>
+      <div class="post-attachments">
+        <div class="post-icons">
+          <i class="camera icon"></i>
         </div>
-        <button class="ui primary basic icon button upload">
-          <i class="cloud icon"></i>
-          Upload Photos
-        </button>
+        <div class="post-actions">
+          <button class="secondary-button" id="save">
+            <i class="save icon"></i>
+            Save
+          </button>
+          <button class="primary-button" id="post">
+            <i class="send icon"></i>
+            Post
+          </button>
+        </div>
       </div>
-
-      <div class="actions">
-        <div class="schedule">
+      <div class="post-schedule">
+        <div class="toggle-schedule">
+          <div class="ui toggle checkbox">
+            <input type="checkbox" name="public" />
+            <label>Schedule</label>
+          </div>
+        </div>
+        <div class="schedule-settings">
           <DatePicker
             v-model="scheduledDate"
             type="date"
-            placeholder="Schedule Date"
+            placeholder="Date"
             confirm-text="OK"
             confirm="true"
           ></DatePicker>
           <DatePicker
             v-model="scheduledTime"
             type="time"
-            placeholder="Schedule Time"
+            placeholder="Time"
             format="hh:mm a"
             value-type="format"
             confirm-text="OK"
@@ -41,13 +53,9 @@
             </div>
           </div>
         </div>
-        <div class="buttons">
-          <button v-if="!scheduledDate || !scheduledTime" class="ui primary button">Post</button>
-          <button v-if="scheduledDate && scheduledTime" class="ui primary button">Schedule</button>
-        </div>
       </div>
     </div>
-  </modal>
+  </div>
 </template>
 
 <script>
@@ -58,11 +66,8 @@ export default {
   data() {
     return {
       scheduledDate: "",
-      scheduledTime: "",
-      disabledDate:{
-       to:new Date(Date.now())
-      }
-    }
+      scheduledTime: ""
+    };
   },
   components: {
     DatePicker
@@ -70,36 +75,68 @@ export default {
 };
 </script>
 
-<style>
-.upload {
-  margin: 0.5rem !important;
-}
-.schedule {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0.5rem;
-}
-
-.post-area {
+<style scoped>
+.post-content {
   display: flex;
   flex-direction: column;
 }
-.field {
-  max-width: 90%;
-  padding: 0.5rem;
+textarea {
+  width: 100% !important;
+  margin: 0.5rem 0 !important;
+  box-sizing: border-box;
 }
-.textarea {
-  width: 60%;
-}
-
-.schedule > .menu {
-  margin: 0.5rem;
-}
-.buttons {
+.post-attachments {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.post-actions * {
+  max-width: 90px !important;
+}
+.secondary-button {
+  max-width: 100px !important;
+  background-color: white;
+  height: 36px;
+  border: 1px solid #3a5998;
+  color: #3a5998;
+  border-radius: 0.25rem;
+  margin: 0.5rem 0.2rem;
+}
+.primary-button {
+  max-width: 100px !important;
+  background-color: #3a5998;
+  height: 36px;
+  border: 1px solid #3a5998;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  margin: 0.5rem 0.2rem;
+}
+
+.toggle-schedule {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.schedule {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.schedule * {
+  max-width: fit-content !important;
+}
+.schedule-settings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0 0 0 !important;
+}
+
+.schedule-settings * {
+  margin: 0 10px 0 0 !important;
+  max-width: 200px !important;
 }
 </style>

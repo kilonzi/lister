@@ -12,22 +12,9 @@ import 'semantic-ui-dimmer/dimmer.css'
 import 'semantic-ui-modal/modal.css'
 import 'semantic-ui-form/form.css'
 import 'semantic-ui-segment/segment.css'
+import 'semantic-ui-checkbox/checkbox.css'
 import 'reset-css'
 import VModal from 'vue-js-modal'
-// import { domain, clientId } from "../auth_config.json";
-// import { Auth0Plugin } from "./auth";
-
-// Vue.use(Auth0Plugin, {
-//     domain,
-//     clientId,
-//     onRedirectCallback: appState => {
-//         router.push(
-//             appState && appState.targetUrl ?
-//             appState.targetUrl :
-//             window.location.pathname
-//         );
-//     }
-// });
 Vue.use(VModal, { componentName: "modal", dynamic: true, injectModalsContainer: true })
 Vue.config.productionTip = false
 

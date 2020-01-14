@@ -1,39 +1,39 @@
 /* eslint-disable no-console */
 <template>
-  <div class="listing">
+  <div class="content">
     <navBar />
-    <div class="content" id="contentDimmer">
-      <aside class="side">
-        <sideBar></sideBar>
-      </aside>
-      <section class="section">
-        <div class="createPost">
-          <button id="contentNewButton" class="ui button newPostButton" v-on:click="show">
-            <i class="edit outline icon"></i>
-            New Listing
-          </button>
-        </div>
-        <div id="contentList" class="content-list">
-          <newPostForm />
-          <listingItem />
-        </div>
-      </section>
+    <div class="section">
+      <div id="contentList" class="content-list">
+        <newPostForm />
+        <!-- <listingItem /> -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import sideBar from "../components/AppSidebar";
-import listingItem from "../components/AppListingItem";
+// import sideBar from "../components/AppSidebar";
+// import listingItem from "../components/AppListingItem";
 import navBar from "../components/AppNavBar";
 import newPostForm from "../components/NewPostForm";
 
 export default {
   components: {
-    sideBar,
-    listingItem,
+    // sideBar,
+    // listingItem,
     navBar,
     newPostForm
+  },
+  mounted() {
+    // window.FB.api(
+    //   "/me",
+    //   "GET",
+    //   { fields: "id,name,picture{url},permissions" },
+    //   function(response) {
+    //     // eslint-disable-next-line
+    //     console.log(response);
+    //   }
+    // );
   },
   methods: {
     show() {
@@ -56,43 +56,26 @@ export default {
 </script>
 
 <style scoped>
-.content-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  min-width: 80vw;
-  min-height: 100vh;
-}
-.newPostItem {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-.display {
-  display: none;
-}
-.hidden {
-  visibility: hidden;
-}
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
-  border-radius: 0.28571429rem;
 }
 .section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 1rem;
-  background-color: white;
-  border-radius: 0.28571429rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
 }
+.content-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 0.5rem !important;
+    min-height: 100vh;
+}
+
 .createPost {
-  width: 100%;
+  width: 100vw !important;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -100,12 +83,5 @@ export default {
   margin: 5px;
   justify-content: flex-end;
   border-bottom: 1px solid #4ca1ff;
-}
-.newPostButton {
-  min-width: 50px;
-  border-radius: 0.28571429rem;
-  color: white !important;
-  background-color: #4ca1ff !important;
-  font-family: "Avenir", Helvetica, Arial, sans-serif !important;
 }
 </style>

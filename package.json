@@ -15,6 +15,7 @@
     "reset-css": "^5.0.1",
     "semantic-ui-button": "^2.3.2",
     "semantic-ui-card": "^2.3.1",
+    "semantic-ui-checkbox": "^2.3.1",
     "semantic-ui-dimmer": "^2.4.0",
     "semantic-ui-dropdown": "^2.4.1",
     "semantic-ui-form": "^2.4.0",

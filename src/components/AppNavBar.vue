@@ -11,9 +11,10 @@
           Dropdown
           <i class="dropdown icon"></i>
           <div class="menu">
-            <div class="item">Choice 1</div>
-            <div class="item">Choice 2</div>
-            <div class="item">Choice 3</div>
+             <div class="item">Link Facebook</div>
+            <div class="item">
+              <facebookLogout/>
+            </div>
           </div>
         </div>
       </div>
@@ -22,8 +23,12 @@
 </template>
 
 <script>
+import facebookLogout from './FacebookLogout'
 export default {
   name: "navBar",
+  components:{
+    facebookLogout
+  },
   methods: {
     collapseSidebar() {
       document.getElementById("sideBar").classList.toggle("display");
@@ -37,17 +42,23 @@ nav {
   display: flex !important;
   position: relative;
   align-items: center;
-  padding: 20px;
+  padding: 2.5rem 0.5rem !important;
   background-color: white;
   margin: 0 0 20px 0 !important;
   justify-content: space-between;
+  border-bottom: 1px solid #3a5998;
 }
 .brand {
-  position: relative;
+  display: flex;
+  align-items: center;
+  position:relative;
+  right:0px;
 }
 .userDetails {
-  position: relative;
+  position:relative;
+  left:0px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }

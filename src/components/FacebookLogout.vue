@@ -1,43 +1,36 @@
 <template>
   <div>
-    <button class="button" @click="logInWithFacebook"> Login with Facebook</button>
+    <button class="ui red basic button" @click="logOutFacebook">Logout</button>
   </div>
 </template>
 <script>
-import router from '../router'
+import router from "../router";
 export default {
-  name:"facebookLogin",
+  name: "facebookLogout",
   methods: {
-
-    async logInWithFacebook() {
+    async logOutFacebook() {
       await this.loadFacebookSDK(document, "script", "facebook-jssdk");
       await this.initFacebook();
-      window.FB.login(function(response) {
-        if (response.status == 'connected') {
-          localStorage.clear()
-          var data = response.authResponse
-          var accessToken = data['accessToken']
-          localStorage.setItem("accessToken",accessToken)
-          router.push('/listing')
+      window.FB.logout(function(response) {
+        // eslint-disable-next-line
+        if (response || response.status == "Unknown") {
+          router.push("/login");
         } else {
-          alert("User cancelled login or did not fully authorize.");
+          router.push("/login");
         }
-      },{scope: 'email,user_likes,manage_pages,pages_show_list,publish_pages,publish_to_groups,user_posts'});
-      return false;
+      });
     },
-
     async initFacebook() {
       window.fbAsyncInit = function() {
         window.FB.init({
           appId: "1797524850462493",
           cookie: true, // This is important, it's not enabled by default
-          status : true, 
-          xfbml : true, 
-          version : 'v5.0'
+          status: false,
+          xfbml: true,
+          version: "v5.0"
         });
       };
     },
-
     async loadFacebookSDK(d, s, id) {
       var js,
         fjs = d.getElementsByTagName(s)[0];
@@ -53,14 +46,13 @@ export default {
 };
 </script>
 <style>
-.button{
-  color:white;
+.button {
+  color: white;
   min-width: 150px;
-  background-color: #415DAD;
+  background-color: #415dad;
   height: 2.5rem;
   border-radius: 2rem;
   font-weight: 400;
   font-size: 0.8rem;
 }
-
 </style>
