@@ -3,8 +3,12 @@
   <div class="content">
     <navBar />
     <div class="section">
+      <div class="social-connections">
+        <facebookConnect />
+      </div>
       <div id="contentList" class="content-list">
         <newPostForm />
+
         <!-- <listingItem /> -->
       </div>
     </div>
@@ -16,13 +20,15 @@
 // import listingItem from "../components/AppListingItem";
 import navBar from "../components/AppNavBar";
 import newPostForm from "../components/NewPostForm";
+import facebookConnect from "../components/FacebookConnect";
 
 export default {
   components: {
     // sideBar,
     // listingItem,
     navBar,
-    newPostForm
+    newPostForm,
+    facebookConnect
   },
   mounted() {
     // window.FB.api(
@@ -62,16 +68,23 @@ export default {
   flex-wrap: nowrap;
 }
 .section {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.social-connections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 0 0.5rem 0 !important;
+  border-bottom: 1px solid #3a5998;
 }
 .content-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 0 0.5rem !important;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 0.5rem !important;
+  min-height: 100vh;
 }
 
 .createPost {

@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Listing from '../views/Listing.vue'
 import Dashboard from '../views/Dashboard.vue'
-import Login from '../views/Login.vue'
+import Signin from '../views/Signin.vue'
+import Signup from '../views/Signup.vue'
+import Reset from '../views/ResetPassword.vue'
 
 Vue.use(VueRouter)
 
@@ -23,9 +25,19 @@ const routes = [{
         component: Dashboard
     },
     {
-        path: '/login',
-        name: 'login',
-        component: Login
+        path: '/signin',
+        name: 'signin',
+        component: Signin
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: Signup
+    },
+    {
+        path: '/reset',
+        name: 'reset',
+        component: Reset
     }
 ]
 

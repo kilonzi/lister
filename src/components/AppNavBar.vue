@@ -44,9 +44,10 @@ nav {
   align-items: center;
   padding: 2.5rem 0.5rem !important;
   background-color: white;
-  margin: 0 0 20px 0 !important;
+  margin: 0 0 0.5rem 0 !important;
   justify-content: space-between;
   border-bottom: 1px solid #3a5998;
+  border-radius: 0.5rem;
 }
 .brand {
   display: flex;

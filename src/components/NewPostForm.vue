@@ -20,17 +20,18 @@
       <div class="post-schedule">
         <div class="toggle-schedule">
           <div class="ui toggle checkbox">
-            <input type="checkbox" name="public" />
+            <input type="checkbox" name="public" v-model="scheduleToggle" @select="toggleSchedule"/>
             <label>Schedule</label>
           </div>
         </div>
-        <div class="schedule-settings">
+        <div v-if="scheduleToggle" class="schedule-settings">
           <DatePicker
             v-model="scheduledDate"
             type="date"
             placeholder="Date"
             confirm-text="OK"
-            confirm="true"
+            v-bind:confirm="true"
+            v-bind:show-second="false"
           ></DatePicker>
           <DatePicker
             v-model="scheduledTime"
@@ -39,7 +40,8 @@
             format="hh:mm a"
             value-type="format"
             confirm-text="OK"
-            confirm="true"
+             v-bind:confirm="true"
+             v-bind:show-second="false"
           ></DatePicker>
           <div class="ui compact menu">
             <div class="ui simple dropdown item">
@@ -66,8 +68,15 @@ export default {
   data() {
     return {
       scheduledDate: "",
-      scheduledTime: ""
+      scheduledTime: "",
+      scheduleToggle:""
     };
+  },
+  methods:{
+toggleSchedule(){
+  // eslint-disable-next-line 
+  console.log(scheduleToggle)
+}
   },
   components: {
     DatePicker
