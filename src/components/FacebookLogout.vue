@@ -23,7 +23,7 @@ export default {
     async initFacebook() {
       window.fbAsyncInit = function() {
         window.FB.init({
-          appId: "1797524850462493",
+          appId: "822017987937077",
           cookie: true, // This is important, it's not enabled by default
           status: false,
           xfbml: true,

@@ -1,5 +1,5 @@
 <template>
-  <div style="transform: scale(0.75);">
+  <div :class="transformScale">
     <svg width="338" height="141" viewBox="0 0 338 141" class="css-1j8o68f">
       <defs id="SvgjsDefs7060" />
       <g id="SvgjsG7061" featurekey="rootContainer" transform="matrix(1,0,0,1,0,0)" fill="#3a5998">
@@ -35,9 +35,14 @@
 </template>
 <script>
 export default {
-  name: "logo"
+  name: "logo",
+  props:{
+   transformScale:String
+  }
 };
 </script>
-
 <style>
+.scale{
+transform: scale(0.75)
+}
 </style>

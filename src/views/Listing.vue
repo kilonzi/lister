@@ -4,11 +4,13 @@
     <navBar />
     <div class="section">
       <div class="social-connections">
-        <facebookConnect />
+        <div class="facebook-connect">
+          <facebookConnect />
+        </div>
+        <button @click="getFacebookData">Check Data</button>
       </div>
       <div id="contentList" class="content-list">
         <newPostForm />
-
         <!-- <listingItem /> -->
       </div>
     </div>
@@ -42,12 +44,19 @@ export default {
     // );
   },
   methods: {
-    show() {
-      // eslint-disable-next-line no-console
-      console.log("erty");
-      this.$modal.show("newPost");
-      // eslint-disable-next-line no-console
-      console.log(this.$modal.show("createNewListing"));
+    getFacebookData() {
+      window.FB.api(
+    "/me/groups",
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+        // eslint-disable-next-line
+        console.log(response)
+      }
+    }
+);
+
+  
     },
     hide() {
       this.$modal.hide("createNewListing");
@@ -78,6 +87,9 @@ export default {
   flex-wrap: wrap;
   margin: 0 0 0.5rem 0 !important;
   border-bottom: 1px solid #3a5998;
+}
+.social-connections * {
+  margin: 0.25rem !important;
 }
 .content-list {
   display: flex;
