@@ -7,12 +7,12 @@
 
       <form class="login-content">
         <div class="ui fluid icon input login-input">
-          <input type="email" placeholder="Email Address" id="email" />
+          <input type="email" placeholder="Email Address" id="email" v-model="email" />
         </div>
         <div class="ui fluid icon input login-input">
-          <input type="password" placeholder="Password"  id="password"/>
+          <input type="password" placeholder="Password" id="password" v-model="password" />
         </div>
-        <button class="primary-button" id="sign-in-button">
+        <button class="primary-button" id="sign-in-button" @click="onSignInSubmit" type="button">
           <i class="unlock icon"></i>
           Login
         </button>
@@ -29,19 +29,39 @@
 
 <script>
 import logo from "../components/AppLogo";
-// import * as firebase from "firebase/app";
-
+import firebase from "firebase";
+import config from "../../firebase.config";
+import router from "../router";
+firebase.initializeApp(config);
 export default {
   name: "login",
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
   components: {
     logo
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     onSignInSubmit() {
-
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(UserCredential => {
+          if (UserCredential.user.email) {
+            router.push("/listing");
+          } else {
+            router.push();
+          }
+        })
+        .catch(function(error) {
+          if (error) {
+            alert(error);
+          }
+        });
     }
   }
 };

@@ -7,19 +7,29 @@
 
       <form class="login-content">
         <div class="ui fluid icon input login-input">
-          <input type="text" placeholder="Fullname" id="fullname" />
+          <input type="text" placeholder="Fullname" v-model="fullname" autocomplete="name" />
         </div>
         <div class="ui fluid icon input login-input">
-          <input type="email" placeholder="Email Address" id="email" />
+          <input type="email" placeholder="Email Address" v-model="email" autocomplete="email" />
         </div>
         <div class="ui fluid icon input login-input">
-          <input type="password" placeholder="Password" id="password" />
+          <input
+            type="password"
+            placeholder="Password"
+            v-model="password"
+            autocomplete="new-password"
+          />
         </div>
         <div class="ui fluid icon input login-input">
-          <input type="password" placeholder="Confirm Password" id="confirm-password" />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            v-model="confirmPassword"
+            autocomplete="new-password"
+          />
         </div>
-        <button class="primary-button">
-          <i class="pen icon"></i>
+        <button class="primary-button" type="button" @click="onSignUp">
+          <i class="user icon"></i>
           Signup
         </button>
       </form>
@@ -35,26 +45,61 @@
 
 <script>
 import logo from "../components/AppLogo";
-import * as firebase from "firebase/app";
+import firebase from "firebase";
+// import config from "../../firebase.config";
+import router from "../router";
+// firebase.initializeApp(config);
 export default {
   name: "login",
+  data() {
+    return {
+      email: "",
+      password: "",
+      fullname: "",
+      confirmPassword: ""
+    };
+  },
   components: {
     logo
   },
   methods: {
-    signUpEmail() {
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // eslint-disable-next-line 
-          console.log(errorCode,errorMessage)
-        });
+    onSignUp() {
+      var $vm = this;
+      if (this.password == this.confirmPassword) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // eslint-disable-next-line
+            console.log(errorCode, errorMessage);
+          })
+          .then(function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+              user
+                .updateProfile({
+                  displayName: $vm.fullname,
+                  photoURL:
+                    "https://ui-avatars.com/api/?rounded=true&background=ADAA29&color=3a5998&name=" +
+                    $vm.fullname
+                })
+                .then(function() {
+                  // Update successful.
+                  router.push("/signin");
+                })
+                .catch(function(error) {
+                  // An error happened.
+                  // eslint-disable-next-line
+                  console.log(error);
+                });
+            });
+          });
+      } else {
+        // eslint-disable-next-line
+        console.log("Passwords do not match");
+      }
     }
   }
 };
