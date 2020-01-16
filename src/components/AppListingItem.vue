@@ -1,36 +1,47 @@
 <template >
-  <div class="listContainer">
-    <div class="listingItems">
-      <div class="ui card listItem" v-for="post in posts" :key="post">
-        <div class="content">
-          <div class="right floated meta">14h</div>
-          <img class="ui avatar image" src="https://placeholder.pics/svg/300" /> Elliot
-        </div>
-        <div class="image">
-          <img src="https://placeholder.pics/svg/500" /> Elliot
-        </div>
-        <div class="content">
-          <span class="right floated">
-            <i class="heart outline like icon"></i>
-            17 likes
-          </span>
-          <i class="comment icon"></i>
-          3 comments
-        </div>
-        <div class="extra content">
-          <div class="ui large transparent left icon input">
-            <i class="heart outline icon"></i>
-            <input type="text" placeholder="Add Comment..." />
-          </div>
-        </div>
-      </div>
+  <div class="posted-item">
+    <div class="post-message">
+      <p>This is the last message that</p>
+    </div>
+    <div class="post-attachments">
+      <carousel perPage="6" :navigationEnabled="true">
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+        <slide>
+          <img src="https://placeholder.pics/svg/100x100" alt />
+        </slide>
+      </carousel>
     </div>
   </div>
 </template>
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
 export default {
   name: "listingItem",
+  components: {
+    Carousel,
+    Slide
+  },
   data() {
     return {
       //posts: ["QQ", "QW", "wer", "QQq", "QWq", "werq", "QQs", "QWs", "wers"]
@@ -41,6 +52,33 @@ export default {
 </script>
 
 <style>
+.posted-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 250px;
+  max-width: 50vw;
+  border: 1px solid #000000;
+  margin: 1.5rem 0 0 0;
+}
+.post-message {
+  max-width: 48vw;
+  width: 100%;
+  min-width: 248px;
+  margin: 1rem 0;
+  align-items: flex-start;
+  text-align: left;
+  display: flex;
+}
+.post-attachments {
+  display: flex;
+  min-width: 248px;
+  max-width: 48vw;
+  margin: 1rem 0;
+}
+.post-attachments *{
+   margin: 0 !important;
+}
 .listContainer {
   height: 100vh;
 }

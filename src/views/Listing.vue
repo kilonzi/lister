@@ -10,8 +10,12 @@
         <button @click="getFacebookData">Check Data</button>
       </div>
       <div id="contentList" class="content-list">
-        <newPostForm />
-        <!-- <listingItem /> -->
+        <div class="new-content">
+          <newPostForm />
+        </div>
+        <div class="posted-content">
+          <listingItem />
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +23,7 @@
 
 <script>
 // import sideBar from "../components/AppSidebar";
-// import listingItem from "../components/AppListingItem";
+import listingItem from "../components/AppListingItem";
 import navBar from "../components/AppNavBar";
 import newPostForm from "../components/NewPostForm";
 import facebookConnect from "../components/FacebookConnect";
@@ -27,7 +31,7 @@ import facebookConnect from "../components/FacebookConnect";
 export default {
   components: {
     // sideBar,
-    // listingItem,
+    listingItem,
     navBar,
     newPostForm,
     facebookConnect
@@ -45,18 +49,13 @@ export default {
   },
   methods: {
     getFacebookData() {
-      window.FB.api(
-    "/me/groups",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-        // eslint-disable-next-line
-        console.log(response)
-      }
-    }
-);
-
-  
+      window.FB.api("/me/groups", function(response) {
+        if (response && !response.error) {
+          /* handle the result */
+          // eslint-disable-next-line
+          console.log(response);
+        }
+      });
     },
     hide() {
       this.$modal.hide("createNewListing");

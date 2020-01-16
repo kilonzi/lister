@@ -14,6 +14,7 @@ import 'semantic-ui-form/form.css'
 import 'semantic-ui-segment/segment.css'
 import 'semantic-ui-checkbox/checkbox.css'
 import 'reset-css'
+import VueCarousel from 'vue-carousel';
 
 // var firebase = require("firebase/app");
 // import firebase from 'firebase'
@@ -28,5 +29,6 @@ Vue.config.productionTip = false
 new Vue({
     router,
     store,
+    VueCarousel,
     render: h => h(App)
 }).$mount('#app')

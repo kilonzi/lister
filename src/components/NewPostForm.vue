@@ -2,6 +2,24 @@
   <div class="ui form post-area">
     <div class="post-content">
       <textarea rows="3" class="textarea" placeholder="Message"></textarea>
+      <div class="post-keys">
+        <div class="ui left icon input">
+          <i class="pin icon"></i>
+          <input type="text" placeholder="Location" />
+        </div>
+        <div class="ui left icon input">
+          <i class="bed icon"></i>
+          <input type="number" placeholder="Bedrooms" />
+        </div>
+        <div class="ui left icon input">
+          <i class="hdd icon"></i>
+          <input type="number" placeholder="Baths" />
+        </div>
+        <div class="ui left icon input">
+          <i class="shekel icon"></i>
+          <input type="number" placeholder="Per Month" />
+        </div>
+      </div>
       <div class="post-attachments">
         <div class="post-icons">
           <i class="camera icon"></i>
@@ -20,7 +38,7 @@
       <div class="post-schedule">
         <div class="toggle-schedule">
           <div class="ui toggle checkbox">
-            <input type="checkbox" name="public" v-model="scheduleToggle" @select="toggleSchedule"/>
+            <input type="checkbox" name="public" v-model="scheduleToggle" @select="toggleSchedule" />
             <label>Schedule</label>
           </div>
         </div>
@@ -40,8 +58,8 @@
             format="hh:mm a"
             value-type="format"
             confirm-text="OK"
-             v-bind:confirm="true"
-             v-bind:show-second="false"
+            v-bind:confirm="true"
+            v-bind:show-second="false"
           ></DatePicker>
           <div class="ui compact menu">
             <div class="ui simple dropdown item">
@@ -69,14 +87,14 @@ export default {
     return {
       scheduledDate: "",
       scheduledTime: "",
-      scheduleToggle:""
+      scheduleToggle: ""
     };
   },
-  methods:{
-toggleSchedule(){
-  // eslint-disable-next-line 
-  console.log(scheduleToggle)
-}
+  methods: {
+    toggleSchedule() {
+      // eslint-disable-next-line
+      console.log(scheduleToggle);
+    }
   },
   components: {
     DatePicker
@@ -93,6 +111,16 @@ textarea {
   width: 100% !important;
   margin: 0.5rem 0 !important;
   box-sizing: border-box;
+}
+.post-keys {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.post-key {
+  width: 150px;
 }
 .post-attachments {
   display: flex;
